@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4>Database populated successfully!</h4>
+        <p>Added {{ total_articles }} articles across {{ categories|length }} categories.</p>
+        <a href="{% url 'news_list' %}?from_db=true" class="btn btn-primary">View Articles</a>
+    </div>
+</div>
+{% endblock %}

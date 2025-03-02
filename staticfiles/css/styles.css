@@ -1,0 +1,271 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.messages {
+    margin-bottom: 1rem;
+}
+
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form p {
+    margin-bottom: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+}
+
+form button {
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #555;
+}
+
+@keyframes glowingText {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+    50% { text-shadow: 0 0 10px #fff, 0 0 20px #00ffff, 0 0 25px #00ffff; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; }
+}
+
+@keyframes movingText {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+.animated-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    animation: glowingText 2s infinite alternate, movingText 3s infinite ease-in-out;
+    text-align: center;
+}
+
+
+
+/* Animated Login Button */
+.btn-custom {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ff7eb3, #ff758c);
+    box-shadow: 0 0 15px rgba(255, 120, 150, 0.8);
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Hover Effect */
+.btn-custom:hover {
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 120, 150, 1);
+}
+
+/* Button Animated Glow */
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 70%);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.btn-custom:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+/* Smooth Button Entry Animation */
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.btn-custom {
+    animation: fadeInButton 0.8s ease-in-out forwards;
+}
+
+/* Modern Animated Login Button */
+button[type="submit"] {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 15px rgba(255, 118, 136, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Hover Effect */
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    transform: scale(1.1);
+    box-shadow: 0px 4px 25px rgba(255, 118, 136, 0.7);
+}
+
+/* Button Click Effect */
+button[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+/* Add a subtle glow effect */
+button[type="submit"]::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover::before {
+    opacity: 1;
+}
+
+/* Style the input boxes */
+input[type="text"], input[type="password"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+/* When user clicks on input */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #ff7eb3;
+    box-shadow: 0px 0px 10px rgba(255, 118, 136, 0.5);
+    outline: none;
+}
+
+/* Placeholder Text */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Center the form */
+.login-container {
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin: auto;
+    margin-top: 50px;
+}
+
+.cursor {
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.1s ease-out;
+}
+
+/* Cursor effect on hover */
+.cursor.hover {
+    transform: scale(2);
+    background: rgba(255, 255, 255, 0.7);
+}

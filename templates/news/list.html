@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>News Articles</h1>
+
+    <!-- Filters Section -->
+    <div class="filters">
+        <form method="get">
+            <div class="filter-group">
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category }}" {% if selected_category == category %}selected{% endif %}>
+                            {{ category|capfirst }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="source">Source:</label>
+                <select name="source" id="source">
+                    <option value="">All Sources</option>
+                    {% for source_id, source_name in sources %}
+                        <option value="{{ source_id }}" {% if selected_source == source_id %}selected{% endif %}>
+                            {{ source_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
+
+    <!-- News Articles List -->
+    <div class="articles-list">
+        {% for article in page_obj %}
+            <div class="article">
+                <h2>{{ article.title }}</h2>
+                {% if article.urlToImage %}
+                    <img src="{{ article.urlToImage }}" alt="{{ article.title }}">
+                {% endif %}
+                <p>{{ article.description }}</p>
+                <p><strong>Category:</strong> {{ article.category|capfirst }}</p>
+                <p><strong>Source:</strong> {{ article.source }}</p>
+                <p><strong>Published:</strong> {{ article.publishedAt }}</p>
+                <a href="{{ article.url }}" target="_blank">Read more</a>
+            </div>
+        {% empty %}
+            <div class="no-results">
+                <p>No articles found matching your filters.</p>
+                {% if selected_category %}
+                    <p>Category: {{ selected_category|capfirst }}</p>
+                {% endif %}
+                {% if selected_source %}
+                    <p>Source: {{ selected_source }}</p>
+                {% endif %}
+                <p>Try adjusting your filters or check back later for new articles.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_source %}&source={{ selected_source }}{% endif %}{% if from_db %}&from_db={{ from_db }}{% endif %}">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_source %}&source={{ selected_source }}{% endif %}{% if from_db %}&from_db={{ from_db }}{% endif %}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_source %}&source={{ selected_source }}{% endif %}{% if from_db %}&from_db={{ from_db }}{% endif %}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_source %}&source={{ selected_source }}{% endif %}{% if from_db %}&from_db={{ from_db }}{% endif %}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}
