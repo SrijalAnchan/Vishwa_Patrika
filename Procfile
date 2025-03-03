@@ -1,1 +1,1 @@
-web: gunicorn vishwa_patrkaa.wsgi
+web: gunicorn vishwa_patrikaa.wsgi
